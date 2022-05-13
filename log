@@ -1,0 +1,89 @@
+Started by user INF335
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/richardpinheiro89/prova2 into /var/lib/jenkins/workspace/prova2@script/ab5d27a0352d17262336eb840a60af51fbdf702e971664b152d8b79df86181b2 to read Jenkinsfile
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/richardpinheiro89/prova2
+ > git init /var/lib/jenkins/workspace/prova2@script/ab5d27a0352d17262336eb840a60af51fbdf702e971664b152d8b79df86181b2 # timeout=10
+Fetching upstream changes from https://github.com/richardpinheiro89/prova2
+ > git --version # timeout=10
+ > git --version # 'git version 2.32.0'
+ > git fetch --tags --force --progress -- https://github.com/richardpinheiro89/prova2 +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/richardpinheiro89/prova2 # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision c641ae66270081598b61264f3a3e14733ce7cd99 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c641ae66270081598b61264f3a3e14733ce7cd99 # timeout=10
+Commit message: "Add files via upload"
+First time build. Skipping changelog.
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/prova2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/richardpinheiro89/prova2
+ > git init /var/lib/jenkins/workspace/prova2 # timeout=10
+Fetching upstream changes from https://github.com/richardpinheiro89/prova2
+ > git --version # timeout=10
+ > git --version # 'git version 2.32.0'
+ > git fetch --tags --force --progress -- https://github.com/richardpinheiro89/prova2 +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/richardpinheiro89/prova2 # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision c641ae66270081598b61264f3a3e14733ce7cd99 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c641ae66270081598b61264f3a3e14733ce7cd99 # timeout=10
+Commit message: "Add files via upload"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] sh
++ docker build -t olaunicamp .
+Sending build context to Docker daemon  62.98kB
+
+Step 1/4 : FROM openjdk:11
+ ---> a6de6da8040c
+Step 2/4 : COPY OlaUnicamp.java /
+ ---> Using cache
+ ---> af1326475c8c
+Step 3/4 : RUN javac OlaUnicamp.java
+ ---> Using cache
+ ---> a72405385af2
+Step 4/4 : CMD [ "java", "OlaUnicamp"]
+ ---> Using cache
+ ---> 461654b70cad
+Successfully built 461654b70cad
+Successfully tagged olaunicamp:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (run)
+[Pipeline] sh
++ docker run --rm olaunicamp
+Olá Unicamp
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
